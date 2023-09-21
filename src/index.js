@@ -13,16 +13,17 @@ function displayRamen(ramen) {
     ramenImg.src = ramen['image']
     ramenImg.id = ramen['name']
     ramenImg.alt = ramen['restaurant']
-    ramenImg.addEventListener('click', displayClicked)
+    ramenImg.addEventListener('click', (e) => {
+            let ramenFocusImg = document.querySelector('.detail-image')
+            ramenFocusImg.src = ramen['image']
+            let ramenName = document.querySelector('.name')
+            ramenName.textContent = ramen['name']
+            let ramenRest = document.querySelector('.restaurant')
+            ramenRest.textContent = ramen['restaurant']
+            let rating = document.getElementById('rating-display')
+            rating.textContent = ramen['rating']
+            let comment = document.getElementById('comment-display')
+            comment.textContent = ramen['comment']
+        })
     ramenMenu.append(ramenImg)
-}
-
-function displayClicked(e) {
-    console.log(e.target.src)
-    let ramenFocusImg = document.querySelector('.detail-image')
-    ramenFocusImg.src = e.target.src
-    let ramenName = document.querySelector('.name')
-    ramenName.textContent = e.target.id
-    let ramenRest = document.querySelector('.restaurant')
-    ramenRest.textContent = e.target.alt
 }
